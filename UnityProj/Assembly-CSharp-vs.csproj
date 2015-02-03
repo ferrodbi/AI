@@ -48,10 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\A.cs" />
      <Compile Include="Assets\CreateObstaclesCourse.cs" />
+     <Compile Include="Assets\CreatePolyMap.cs" />
      <Compile Include="Assets\DifferentialDrive.cs" />
      <Compile Include="Assets\DynamicPPM.cs" />
      <Compile Include="Assets\KinematicCarModel.cs" />
      <Compile Include="Assets\KinematicPointModel.cs" />
+     <Compile Include="Assets\NodeTree.cs" />
+     <Compile Include="Assets\Polymath.cs" />
      <Compile Include="Assets\discreteMove.cs" />
      <None Include="Assets\discMap.txt.txt" />
  <Reference Include="UnityEngine.UI">

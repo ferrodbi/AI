@@ -6,8 +6,8 @@ public class DifferentialDrive : MonoBehaviour {
 	public float v;
 	public float w;
 	public GameObject goalObj;
+	public GameObject intermediate;
 	private Vector3 finish;
-	private float g = 0.0f;
 	// Use this for initialization
 	void Start () {
 		finish = goalObj.transform.position;
@@ -16,11 +16,11 @@ public class DifferentialDrive : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 tmpV = (finish - transform.position).normalized;
-		float tmpA = Vector3.Angle (tmpV, Vector3.forward);
-		//g += tmpA * Time.deltaTime;
-		transform.Translate (Vector3.forward * Time.deltaTime * v * Mathf.Cos(g));
-		transform.Translate (Vector3.right * Time.deltaTime * v * Mathf.Sin (g));
-		//transform.Rotate (Vector3.up, tmpA * Time.deltaTime);
-		print (tmpA);
+		float rotVec = Mathf.Sign(Vector3.Dot(transform.right, tmpV));
+		float speed = Mathf.Max (0.0f, Vector3.Dot (transform.forward, tmpV)) * v;
+		print (speed);
+		transform.Translate (Vector3.forward * Time.deltaTime * speed);
+
+		transform.Rotate (Vector3.up, rotVec*56 * Time.deltaTime);
 	}
 }

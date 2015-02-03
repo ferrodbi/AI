@@ -19,8 +19,9 @@ public class KinematicCarModel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float rot = (vMax / l) * Mathf.Tan (wMax) * Time.deltaTime * 57.296f;
+		Vector3 tmpV = (finish - transform.position).normalized;
+		float rotVec = Mathf.Sign(Vector3.Dot(backRot.right, tmpV));
 		backRot.Translate(Vector3.forward * vMax * Time.deltaTime);
-		backRot.Rotate (Vector3.up * rot);
+		backRot.Rotate (Vector3.up, rotVec * vMax * 0.2f);
 	}
 }
